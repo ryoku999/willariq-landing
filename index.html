@@ -7,466 +7,48 @@
       name="description"
       content="Reporta incidencias, sigue su atención y consulta servicios municipales desde Willariq para Android."
     />
-    <meta name="theme-color" content="#111d2c" />
+    <meta name="theme-color" content="#030712" />
     <title>Willariq · Tu municipio, más cerca</title>
     <link rel="icon" href="logo-v3.jpeg" type="image/jpeg" />
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #111d2c;
-        --panel: #192b40;
-        --text: #f4f8fc;
-        --muted: #b7c9da;
-        --mint: #b2f3dc;
-        --ink: #102e2a;
-        --line: #ffffff26;
-        font-family: Inter, system-ui, sans-serif;
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      [hidden] {
-        display: none !important;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      button {
-        font: inherit;
-      }
-      :focus-visible {
-        outline: 3px solid #f7cc88;
-        outline-offset: 4px;
-      }
-      section {
-        scroll-margin-top: 1.5rem;
-      }
-      .wrap {
-        width: min(1160px, calc(100% - 3rem));
-        margin-inline: auto;
-      }
-      .top {
-        background:
-          radial-gradient(ellipse at 84% 28%, #24564f 0, transparent 55%),
-          linear-gradient(135deg, #172839, #111c2f 65%);
-      }
-      header {
-        border-bottom: 1px solid var(--line);
-      }
-      .nav,
-      .footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .nav {
-        padding-block: 1rem;
-      }
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        font-size: 1.23rem;
-      }
-      .brand img {
-        width: 42px;
-        height: 42px;
-        object-fit: contain;
-        background: #fff;
-        border-radius: 12px;
-      }
-      .nav nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: clamp(0.85rem, 3vw, 2rem);
-        align-items: center;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-      .nav nav a:hover,
-      .footer a:hover {
-        color: var(--mint);
-      }
-      .hero {
-        min-height: 620px;
-        display: grid;
-        grid-template-columns: 1.13fr 0.87fr;
-        align-items: center;
-        gap: clamp(2rem, 6vw, 6rem);
-        padding-block: clamp(3rem, 9vw, 7rem);
-      }
-      h1,
-      h2,
-      p {
-        margin: 0;
-      }
-      h1,
-      h2 {
-        text-wrap: balance;
-      }
-      h1 {
-        font-size: clamp(3.15rem, 7.3vw, 6.7rem);
-        font-weight: 760;
-        line-height: 0.97;
-        letter-spacing: -0.078em;
-      }
-      h1 span {
-        color: var(--mint);
-      }
-      h2 {
-        font-size: clamp(2.15rem, 4.8vw, 4.5rem);
-        line-height: 1.02;
-        letter-spacing: -0.057em;
-      }
-      .intro {
-        max-width: 34rem;
-        margin-top: 1.5rem;
-        color: var(--muted);
-        font-size: clamp(1.04rem, 2vw, 1.25rem);
-        line-height: 1.65;
-      }
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.8rem;
-        margin-top: 1.8rem;
-      }
-      .button {
-        display: inline-flex;
-        min-height: 48px;
-        justify-content: center;
-        align-items: center;
-        padding: 0.7rem 1.1rem;
-        border: 1px solid transparent;
-        border-radius: 12px;
-        font-weight: 750;
-        transition:
-          background 0.2s,
-          transform 0.2s;
-      }
-      .button:hover {
-        transform: translateY(-2px);
-      }
-      .primary {
-        background: var(--mint);
-        color: var(--ink);
-      }
-      .primary:hover {
-        background: #d2fbed;
-      }
-      .secondary {
-        border-color: var(--line);
-        color: var(--text);
-      }
-      .secondary:hover {
-        background: #ffffff12;
-      }
-      .hero-art {
-        position: relative;
-        display: grid;
-        place-items: center;
-        min-width: 0;
-        isolation: isolate;
-      }
-      .hero-art::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        width: min(100%, 390px);
-        aspect-ratio: 1;
-        border-radius: 50%;
-        border: 1px solid #afeed949;
-        box-shadow:
-          0 0 0 24px #b2f3dc12,
-          0 0 0 48px #b2f3dc0a;
-      }
-      .phone {
-        position: relative;
-        width: min(100%, 255px);
-        aspect-ratio: 9 / 17.8;
-        padding: 8px;
-        border: 1px solid #d5f5ed45;
-        border-radius: 35px;
-        background: #0d1723;
-        box-shadow: 0 24px 70px #060e1b9c;
-      }
-      .hero-phone {
-        transform: rotate(7deg);
-        animation: arrive 0.8s ease-out both;
-      }
-      @keyframes arrive {
-        from {
-          opacity: 0;
-          transform: translateY(16px) rotate(3deg);
-        }
-      }
-      .screen {
-        position: relative;
-        display: grid;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 27px;
-        background: #eaf2f4;
-        color: #142b42;
-      }
-      .screen > img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        position: absolute;
-        inset: 0;
-        background: #0d1723;
-      }
-      .demo {
-        padding: 22px 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .demo-brand {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 800;
-      }
-      .demo-brand img {
-        width: 28px;
-        height: 28px;
-        border-radius: 8px;
-        background: white;
-        object-fit: contain;
-      }
-      .demo h3 {
-        margin: 0.4rem 0 0;
-        font-size: 1.3rem;
-        line-height: 1.15;
-      }
-      .demo p {
-        color: #435971;
-        font-size: 0.8rem;
-        line-height: 1.42;
-      }
-      .demo-card {
-        border-radius: 15px;
-        padding: 12px;
-        font-size: 0.83rem;
-        font-weight: 750;
-        background: #c9f1e5;
-      }
-      .demo-card:last-child {
-        background: #f4dfe2;
-        color: #6e3240;
-      }
-      .caption {
-        position: absolute;
-        bottom: 6px;
-        right: 0;
-        padding: 0.6rem 0.8rem;
-        background: #142637;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        color: #dbf4ec;
-        font-size: 0.76rem;
-      }
-      .features,
-      .gallery,
-      .download {
-        padding-block: clamp(3.6rem, 8vw, 7rem);
-      }
-      .features {
-        border-block: 1px solid var(--line);
-      }
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        margin-top: 1.9rem;
-        gap: 1rem;
-      }
-      .feature {
-        padding: clamp(1.05rem, 3vw, 1.8rem);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        background: linear-gradient(145deg, #21364b, #19283b);
-      }
-      .feature h3 {
-        margin: 0 0 0.65rem;
-        font-size: 1.18rem;
-      }
-      .feature p,
-      .gallery-copy p,
-      .download p {
-        color: var(--muted);
-        line-height: 1.65;
-      }
-      .gallery {
-        background: linear-gradient(135deg, #152436, #1b333d);
-      }
-      .gallery-layout {
-        margin-top: 2rem;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
-        gap: clamp(1.5rem, 5vw, 5rem);
-        align-items: center;
-      }
-      .controls {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-      .controls button {
-        min-height: 44px;
-        padding: 0.5rem 0.9rem;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: #152739;
-        color: var(--text);
-        cursor: pointer;
-      }
-      .controls button:hover {
-        border-color: var(--mint);
-      }
-      .controls button[aria-pressed="true"] {
-        background: var(--mint);
-        border-color: var(--mint);
-        color: var(--ink);
-        font-weight: 750;
-      }
-      .gallery-copy {
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--line);
-      }
-      .gallery-copy h3 {
-        font-size: 1.38rem;
-        margin: 0 0 0.5rem;
-      }
-      .gallery-phone {
-        justify-self: center;
-      }
-      .gallery-phone .screen {
-        background: linear-gradient(145deg, #d8f4ef, #c7d8ee);
-        align-items: center;
-      }
-      .screen-summary {
-        display: grid;
-        padding: 1rem;
-        text-align: center;
-        gap: 0.6rem;
-        justify-items: center;
-      }
-      .screen-summary img {
-        width: 49px;
-        height: 49px;
-        object-fit: contain;
-        background: white;
-        border-radius: 12px;
-      }
-      .screen-summary p {
-        font-size: 0.84rem;
-      }
-      .download-box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        padding: clamp(1.4rem, 5vw, 3.5rem);
-        border: 1px solid #acd9d655;
-        border-radius: 26px;
-        background: linear-gradient(125deg, #283e54, #204a45);
-      }
-      .download p {
-        max-width: 40rem;
-        margin-top: 0.85rem;
-      }
-      .download .availability {
-        font-size: 0.94rem;
-      }
-      .qr {
-        text-align: center;
-        margin: 0;
-      }
-      .qr img {
-        display: block;
-        width: 145px;
-        height: 145px;
-        object-fit: contain;
-        padding: 8px;
-        border-radius: 12px;
-        background: white;
-      }
-      .qr figcaption {
-        color: var(--text);
-        font-size: 0.85rem;
-        margin-top: 0.65rem;
-      }
-      footer {
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-      }
-      .footer {
-        padding-block: 1.35rem;
-      }
-      @media (max-width: 760px) {
-        .hero {
-          grid-template-columns: 1fr;
-          min-height: 0;
-        }
-        .hero-art {
-          margin: 0.5rem 0;
-        }
-        .hero-art::before {
-          width: min(75%, 320px);
-        }
-        .caption {
-          right: max(0px, calc(50% - 160px));
-        }
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-        .gallery-layout {
-          grid-template-columns: 1fr;
-        }
-      }
-      @media (max-width: 380px) {
-        .wrap {
-          width: calc(100% - 2rem);
-        }
-        .hero-phone {
-          width: 215px;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-        *,
-        *::before,
-        *::after {
-          animation: none !important;
-          transition: none !important;
-        }
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body id="inicio">
-    <header class="top">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-pin" viewBox="0 0 24 24">
+        <path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.7" />
+      </symbol>
+      <symbol id="icon-list" viewBox="0 0 24 24">
+        <path
+          d="M11 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6M7 8h4m-4 4h3m-3 4h2m4-8 3 3 5-6"
+        />
+      </symbol>
+      <symbol id="icon-chat" viewBox="0 0 24 24">
+        <path
+          d="M21 11.5a8.4 8.4 0 0 1-8.8 8.4 9.4 9.4 0 0 1-3.6-.7L3 21l1.7-5a8 8 0 0 1-1.7-4.8A8.7 8.7 0 0 1 12 3a8.7 8.7 0 0 1 9 8.5Z"
+        />
+        <path d="M8 11.5h.01m4 0h.01m4 0h.01" stroke-width="2.8" />
+      </symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path
+          d="M12 3v12m-5-5 5 5 5-5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"
+        />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h15m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="icon-up" viewBox="0 0 24 24">
+        <path d="M12 20V5m-6 6 6-6 6 6" />
+      </symbol>
+    </svg>
+    <header class="site-header">
       <div class="wrap nav">
         <a class="brand" href="#inicio"
           ><img src="logo-v3.jpeg" width="42" height="42" alt="" />Willariq</a
@@ -474,14 +56,19 @@
         <nav aria-label="Principal">
           <a href="#funciones">Funciones</a>
           <a href="#pantallas">Pantallas</a>
-          <a href="#descarga">Descarga</a>
+          <a class="button primary nav-download" href="#descarga"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#icon-download"></use>
+            </svg>
+            Descarga</a
+          >
         </nav>
       </div>
     </header>
-    <main>
-      <div class="top">
+    <main id="contenido" tabindex="-1">
+      <div class="hero-shell">
         <section class="wrap hero" aria-labelledby="hero-title">
-          <div>
+          <div class="hero-copy">
             <h1 id="hero-title">Tu municipio,<br /><span>más cerca.</span></h1>
             <p class="intro">
               Reporta una incidencia desde tu teléfono, sigue su atención y
@@ -489,12 +76,27 @@
             </p>
             <div class="actions">
               <a class="button primary" href="#descarga"
-                >Obtener para Android</a
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#icon-download"></use>
+                </svg>
+                Obtener para Android</a
               >
-              <a class="button secondary" href="#pantallas">Explorar la app</a>
+              <a class="button secondary" href="#pantallas"
+                >Explorar la app
+                <svg class="icon" aria-hidden="true">
+                  <use href="#icon-arrow"></use></svg
+              ></a>
             </div>
           </div>
-          <div class="hero-art" aria-label="Vista de Inicio">
+          <div class="hero-art">
+            <span class="clay-icon coral orbit-icon orbit-pin"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#icon-pin"></use></svg
+            ></span>
+            <span class="clay-icon orbit-icon orbit-chat"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#icon-chat"></use></svg
+            ></span>
             <div class="phone hero-phone">
               <div class="screen">
                 <div class="demo" id="hero-demo">
@@ -508,6 +110,7 @@
                 </div>
                 <img
                   id="hero-capture"
+                  fetchpriority="high"
                   alt="Pantalla de inicio de Willariq"
                   hidden
                 />
@@ -522,6 +125,10 @@
           <h2 id="features-title">Del reporte al seguimiento.</h2>
           <div class="features-grid">
             <article class="feature">
+              <span class="clay-icon coral"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#icon-pin"></use></svg
+              ></span>
               <h3>Registra una incidencia</h3>
               <p>
                 Describe lo ocurrido y agrega fotos y ubicación para identificar
@@ -529,6 +136,10 @@
               </p>
             </article>
             <article class="feature">
+              <span class="clay-icon blue"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#icon-list"></use></svg
+              ></span>
               <h3>Sigue su atención</h3>
               <p>
                 Revisa el estado y el historial de tus reportes. Las
@@ -536,6 +147,10 @@
               </p>
             </article>
             <article class="feature">
+              <span class="clay-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#icon-chat"></use></svg
+              ></span>
               <h3>Consulta al asistente</h3>
               <p>
                 Pregunta por servicios municipales o elige uno de tus reportes
@@ -549,7 +164,7 @@
         <div class="wrap">
           <h2 id="gallery-title">Explora las pantallas.</h2>
           <div class="gallery-layout">
-            <div>
+            <div class="gallery-picker">
               <div
                 class="controls"
                 id="screen-controls"
@@ -564,14 +179,16 @@
                 </p>
               </div>
             </div>
-            <div class="phone gallery-phone">
-              <div class="screen">
-                <div class="screen-summary" id="screen-summary">
-                  <img src="logo-v3.jpeg" alt="" />
-                  <strong id="preview-title">Inicio</strong>
-                  <p>Captura próximamente</p>
+            <div class="gallery-stage">
+              <div class="phone gallery-phone">
+                <div class="screen">
+                  <div class="screen-summary" id="screen-summary">
+                    <img src="logo-v3.jpeg" alt="" />
+                    <strong id="preview-title">Inicio</strong>
+                    <p>Captura próximamente</p>
+                  </div>
+                  <img id="screen-capture" alt="" decoding="async" hidden />
                 </div>
-                <img id="screen-capture" alt="" hidden />
               </div>
             </div>
           </div>
@@ -589,7 +206,12 @@
               La descarga estará disponible aquí cuando se publique el APK.
             </p>
             <div class="actions" id="download-actions" hidden>
-              <a class="button primary" id="apk-link" hidden>Descargar APK</a>
+              <a class="button primary" id="apk-link" hidden
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#icon-download"></use>
+                </svg>
+                Descargar APK</a
+              >
               <a class="button primary" id="play-link" hidden
                 >Ver en Google Play</a
               >
@@ -610,7 +232,13 @@
     </main>
     <footer>
       <div class="wrap footer">
-        <a href="#inicio">Willariq</a><a href="#inicio">Volver arriba ↑</a>
+        <a class="brand" href="#inicio"
+          ><img src="logo-v3.jpeg" width="40" height="40" alt="" />Willariq</a
+        >
+        <a href="#inicio"
+          >Volver arriba
+          <svg class="icon" aria-hidden="true"><use href="#icon-up"></use></svg
+        ></a>
       </div>
     </footer>
     <script>
@@ -641,6 +269,7 @@
         },
         {
           file: "detalle",
+          captureAvailable: false,
           title: "Detalle",
           description:
             "Consulta el estado, el historial y las fotos de un reporte.",
@@ -664,6 +293,7 @@
         },
         {
           file: "ajustes",
+          captureAvailable: false,
           title: "Ajustes",
           description: "Elige el modo claro u oscuro para la app.",
         },
@@ -693,14 +323,26 @@
       function showCapture(image, placeholder, path) {
         image.hidden = true;
         placeholder.hidden = false;
+        image.classList.remove("capture-enter");
+
+        if (!path) {
+          image.onload = null;
+          image.removeAttribute("src");
+          return;
+        }
+
         image.onload = () => {
           image.hidden = false;
           placeholder.hidden = true;
+          image.classList.add("capture-enter");
         };
         image.src = path;
       }
 
       function selectScreen(screen) {
+        const selected = controls.querySelector('[aria-pressed="true"]');
+        if (selected?.dataset.screen === screen.file) return;
+
         for (const button of controls.children) {
           button.setAttribute(
             "aria-pressed",
@@ -711,7 +353,13 @@
         byId("screen-description").textContent = screen.description;
         byId("preview-title").textContent = screen.title;
         screenPhoto.alt = `${screen.title} en Willariq`;
-        showCapture(screenPhoto, screenSummary, `capturas/${screen.file}.jpg`);
+        showCapture(
+          screenPhoto,
+          screenSummary,
+          screen.captureAvailable === false
+            ? null
+            : `capturas/${screen.file}.jpg`,
+        );
       }
 
       for (const screen of screens) {
