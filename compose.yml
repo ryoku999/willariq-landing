@@ -1,0 +1,36 @@
+services:
+  willariq-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    expose:
+      - "6000"
+
+    security_opt:
+      - no-new-privileges:true
+
+    networks:
+      dokploy-network:
+        aliases:
+          - willariq-landing
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - -O
+        - /dev/null
+        - http://127.0.0.1:6000/health
+
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  dokploy-network:
+    external: true

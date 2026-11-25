@@ -1,0 +1,17 @@
+.env
+.env.*
+
+node_modules/
+downloads/
+
+*.apk
+*.aab
+*.jks
+*.keystore
+*.log
+
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
